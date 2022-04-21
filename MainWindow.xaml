@@ -5,8 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="350">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="10" BorderThickness="1" BorderBrush="Black">
+            <TextBlock x:Name="output_" Foreground="Black" TextAlignment="Right" Text="0" FontSize="36"/>
+        </Border>
+
+        <Button x:Name="button7_" Grid.Row="1" Grid.Column="0" Content="7" FontSize="36" Click="Num_Click"/>
+        <Button x:Name="button8_" Grid.Row="1" Grid.Column="1" Content="8" FontSize="36" Click="Num_Click"/>
+        <Button x:Name="button9_" Grid.Row="1" Grid.Column="2" Content="9" FontSize="36" Click="Num_Click"/>
+        <Button x:Name="buttonPlus_" Grid.Row="1" Grid.Column="3" Content="+" Click="Operator_Click" FontSize="36"/>
+
+        <Button x:Name="button4_" Grid.Row="2" Grid.Column="0" Content="4" FontSize="36" Click="Num_Click"/>
+        <Button x:Name="button5_" Grid.Row="2" Grid.Column="1" Content="5" FontSize="36" Click="Num_Click"/>
+        <Button x:Name="button6_" Grid.Row="2" Grid.Column="2" Content="6" FontSize="36" Click="Num_Click"/>
+        <Button x:Name="buttonMinus_" Grid.Row="2" Grid.Column="3" Content="-" Click="Operator_Click" FontSize="36"/>
+
+        <Button x:Name="button1_" Grid.Row="3" Grid.Column="0" Content="1" FontSize="36" Click="Num_Click"/>
+        <Button x:Name="button2_" Grid.Row="3" Grid.Column="1" Content="2" FontSize="36" Click="Num_Click"/>
+        <Button x:Name="button3_" Grid.Row="3" Grid.Column="2" Content="3" FontSize="36" Click="Num_Click"/>
+        <Button x:Name="buttonMulti_" Grid.Row="3" Grid.Column="3" Content="*" Click="Operator_Click" FontSize="36"/>
+
+        <Button x:Name="button0_" Grid.Row="4" Grid.Column="0" Content="0" FontSize="36" Click="Num_Click"/>
+        <Button x:Name="buttonCom_" Grid.Row="4" Grid.Column="1" Content="." FontSize="36" Click="ButtonDot__Click"/>
+        <Button x:Name="buttonSqrt_" Grid.Row="4" Grid.Column="2" Content="√" Click="Operator_Click" FontSize="36"/>
+        <Button x:Name="buttonDiv_" Grid.Row="4" Grid.Column="3" Content="÷" Click="Operator_Click" FontSize="36"/>
+
+        <Button x:Name="buttonEqual_" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="=" FontSize="36"/>
+        <Button x:Name="buttonC_" Grid.Row="5" Grid.Column="2" Content="C" FontSize="36" Click="buttonC__Click"/>
+        <Button x:Name="buttonExit_" Grid.Row="5" Grid.Column="3" Content="Exit" FontSize="24"/>
     </Grid>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+    </Window.Resources>
 </Window>
