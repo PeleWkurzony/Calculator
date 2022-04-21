@@ -22,12 +22,17 @@ namespace Calculator {
             InitializeComponent();
         }
 
-        double lastValue = 0;
+        private double lastValue = 0;
+        private char lastOperator = '\0';
 
         private void Num_Click(object sender, RoutedEventArgs e) {
             Button btn = (Button)sender;
             int value = int.Parse(btn.Content.ToString());
-            output_.Text += value.ToString();
+            if (lastValue != 0.0) {
+                output_.Text = value.ToString();
+            } else {
+                output_.Text += value.ToString();
+            }
 
             string output = output_.Text.ToString();
             if (output[0] == '0' && output.Length > 1) {
@@ -36,8 +41,7 @@ namespace Calculator {
                 output_.Text = tmp;
             }
         }
-
-        private void ButtonDot__Click(object sender, RoutedEventArgs e) {
+        private void ButtonDot_Click(object sender, RoutedEventArgs e) {
             foreach (char chr in output_.Text.ToString()) {
                 if (chr == '.') {
                     return;
@@ -45,51 +49,54 @@ namespace Calculator {
             }
             output_.Text += '.';
         }
+        private void buttonC_Click(object sender, RoutedEventArgs e) {
+            output_.Text = "0";
+            lastValue = 0.0;
+            lastOperator = '\0';
+        }
+        private void Calculate() {
 
-        private void buttonC__Click(object sender, RoutedEventArgs e) {
-            output_.Text = "";
+            double acctValue = 0.0;
+            double result = 0.0;
+            Double.TryParse(output_.Text, out acctValue);
+            if (lastOperator == '+') result = lastValue + acctValue;
+            else if (lastOperator == '-') result = lastValue - acctValue;
+            else if (lastOperator == '*') result = lastValue * acctValue;
+            else if (lastOperator == '÷') result = lastValue / acctValue;
+
+            output_.Text = result.ToString();
+
+            lastOperator = '\0';
             lastValue = 0.0;
         }
-
-        private void Calculate() {
-            int _;
-            int last = 0;
-            List<Double> values = new List<double>();
-            List<char> chars = new List<char>();
-            string txt = output_.Text;
-            for (int i = 0; i < txt.Length; i++) {
-                char chr = txt[i];
-                if (!int.TryParse(chr.ToString(), out _)) {
-                    string tmp = txt.Substring(last, i - last);
-                    values.Add(Double.Parse(txt.Substring(last, i - last)));
-                    last = i;
-                    chars.Add(chr);
-                    foreach (double d in values) {
-                        Console.WriteLine(d);
-                    }
-                    foreach (char c in chars) {
-                        Console.WriteLine(c);
-                    }
-                }
-            }
-
-        }
-
         private void Operator_Click(object sender, RoutedEventArgs e) {
             Button btn = (Button)sender;
             string oper = btn.Content.ToString();
 
             if (oper == "√") {
-                Calculate();
                 double value;
                 if (Double.TryParse(output_.Text.ToString(), out value)) {
                     double square = Math.Sqrt(value);
                     output_.Text = square.ToString();
                 }
+                return;
             }
 
-            output_.Text += oper;
+            double tempOutput;
+            Double.TryParse(output_.Text, out tempOutput);
 
+            if (lastValue != 0.0 && tempOutput != 0.0) {
+                Calculate();
+                return;
+            }
+            if (lastValue == 0.0) {
+                output_.Text = "0";
+            }
+            Char.TryParse(oper, out lastOperator);
+            lastValue = tempOutput;
+        }
+        private void Calculate_Click(object sender, RoutedEventArgs e) {
+            Calculate();
         }
     }
 }

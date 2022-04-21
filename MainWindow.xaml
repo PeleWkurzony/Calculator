@@ -42,12 +42,12 @@
         <Button x:Name="buttonMulti_" Grid.Row="3" Grid.Column="3" Content="*" Click="Operator_Click" FontSize="36"/>
 
         <Button x:Name="button0_" Grid.Row="4" Grid.Column="0" Content="0" FontSize="36" Click="Num_Click"/>
-        <Button x:Name="buttonCom_" Grid.Row="4" Grid.Column="1" Content="." FontSize="36" Click="ButtonDot__Click"/>
+        <Button x:Name="buttonCom_" Grid.Row="4" Grid.Column="1" Content="." FontSize="36" Click="ButtonDot_Click"/>
         <Button x:Name="buttonSqrt_" Grid.Row="4" Grid.Column="2" Content="√" Click="Operator_Click" FontSize="36"/>
         <Button x:Name="buttonDiv_" Grid.Row="4" Grid.Column="3" Content="÷" Click="Operator_Click" FontSize="36"/>
 
-        <Button x:Name="buttonEqual_" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="=" FontSize="36"/>
-        <Button x:Name="buttonC_" Grid.Row="5" Grid.Column="2" Content="C" FontSize="36" Click="buttonC__Click"/>
+        <Button x:Name="buttonEqual_" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="Calculate_Click" Content="=" FontSize="36"/>
+        <Button x:Name="buttonC_" Grid.Row="5" Grid.Column="2" Content="C" FontSize="36" Click="buttonC_Click"/>
         <Button x:Name="buttonExit_" Grid.Row="5" Grid.Column="3" Content="Exit" FontSize="24"/>
     </Grid>
     <Window.Resources>
