@@ -48,7 +48,7 @@
 
         <Button x:Name="buttonEqual_" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="Calculate_Click" Content="=" FontSize="36"/>
         <Button x:Name="buttonC_" Grid.Row="5" Grid.Column="2" Content="C" FontSize="36" Click="buttonC_Click"/>
-        <Button x:Name="buttonExit_" Grid.Row="5" Grid.Column="3" Content="Exit" FontSize="24"/>
+        <Button x:Name="buttonExit_" Grid.Row="5" Grid.Column="3" Content="Exit" Click="Exit_Click" FontSize="24"/>
     </Grid>
     <Window.Resources>
         <Style TargetType="Button">
